@@ -27,15 +27,16 @@ set -e
 OUTPUT_DIR=/buildroot_output
 BUILDROOT_DIR=/root/buildroot
 
+# run docker with --rm to prevent having garbage
+
 DOCKER_RUN="docker run
-    --rm
-    -ti
-    --volumes-from buildroot_output
+    -i
+    --volume buildroot_output
     -v $(pwd)/data:$BUILDROOT_DIR/data
     -v $(pwd)/external:$BUILDROOT_DIR/external
     -v $(pwd)/rootfs_overlay:$BUILDROOT_DIR/rootfs_overlay
     -v $(pwd)/images:$OUTPUT_DIR/images
-    ."
+    -t crankshaft-xl"
 
 make() {
     echo "make O=$OUTPUT_DIR"
