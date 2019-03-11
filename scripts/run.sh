@@ -35,7 +35,7 @@ DOCKER_RUN="docker run
     -v $(pwd)/external:$BUILDROOT_DIR/external
     -v $(pwd)/rootfs_overlay:$BUILDROOT_DIR/rootfs_overlay
     -v $(pwd)/images:$OUTPUT_DIR/images
-    advancedclimatesystems/buildroot"
+    ."
 
 make() {
     echo "make O=$OUTPUT_DIR"
